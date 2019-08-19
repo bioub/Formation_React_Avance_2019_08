@@ -1,0 +1,13 @@
+.TodoForm {
+  margin: 0.6em 0;
+  display: flex;
+  padding: 5px;
+}
+
+.TodoForm input {
+  flex: 1;
+}
+
+.TodoForm button {
+  margin-left: 5px;
+}
