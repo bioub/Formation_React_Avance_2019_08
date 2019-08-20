@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <TopBar />
         <div className="App-Route-Container">
-          <Route path="/todos" component={Todos} />
+          <Route path="/todos" component={Todos}></Route>
           <Route path="/users" component={Users} />
         </div>
       </BrowserRouter>

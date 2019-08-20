@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export function desactivable(WrappedComponent) {
-  return class extends Component {
+  class Desactivable extends Component {
     state = {
       show: true,
     };
@@ -12,14 +12,19 @@ export function desactivable(WrappedComponent) {
     }
 
     render() {
+      const {show, ...innerProps} = this.props;
       return (
         <div>
           <button onClick={this.handleClick}>{this.state.show ? 'Off' : 'On'}</button>
-          {this.state.show && <WrappedComponent />}
+          {this.state.show && <WrappedComponent {...innerProps} />}
         </div>
       );
     }
   }
+
+  Desactivable.displayName = `Desactivable(${WrappedComponent.displayName || WrappedComponent.name})`;
+
+  return Desactivable;
 }
 // this
 // button.addEventListener('click', () => { this.innerText++; })

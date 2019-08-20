@@ -11,11 +11,16 @@ export class TodoList extends PureComponent {
     items: arrayOf(shape({id: number, text: string, completed: bool})),
   };
 
+  divEl = React.createRef();
+
   render() {
+
+    console.log(this.divEl.current && this.divEl.current.className);
+
     const { count, items, onDeleteItem } = this.props;
     return (
       <>
-        <div className="TodoList">
+        <div className="TodoList" ref={this.divEl}>
           {items.map(it => (
             <TodoItem key={it.id} item={it} onDeleteItem={onDeleteItem} />
           ))}

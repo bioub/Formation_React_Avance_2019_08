@@ -33,9 +33,44 @@ function selectTodosCount(state: State) {
   return selectTodosItems(state).length;
 }
 
-function selectTodosItems(state: State) {
-  return selectTodos(state).items;
+// Bibliothèque reselect
+// createSelector => memoized selector
+// selecteur où quand les params sont les mêmes que l'appel précédent
+// (précédent dispatch), le résultat est mis en cache et simple retournée
+
+// const selectTodosItems = createSelector(
+//   selectTodos,
+//   function selectTodosItems(todos) {
+//     const filter = todos.filter || 'ALL';
+
+//     if (filter === 'ALL') {
+//       return todos.items;
+//     }
+//     else if (filter === 'COMPLETED') {
+//       return todos.items.filter(it => it.completed);
+//     } else if (filter === 'ACTIVE') {
+//       return todos.items.filter(it => !it.completed);
+//     }
+
+//     return .items;
+//   }
+// )
+
+function selectTodosItems(todos) {
+  const filter = todos.filter || 'ALL';
+
+  if (filter === 'ALL') {
+    return todos.items;
+  }
+  else if (filter === 'COMPLETED') {
+    return todos.items.filter(it => it.completed);
+  } else if (filter === 'ACTIVE') {
+    return todos.items.filter(it => !it.completed);
+  }
+
+  return .items;
 }
+
 
 function selectTodosInput(state: State) {
   return selectTodos(state).input;
