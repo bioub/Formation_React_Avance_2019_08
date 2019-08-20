@@ -1,3 +1,5 @@
+// @flow
+
 // recompose (aussi l'ancetre des hooks)
 // const selectTodosCount = compose(
 //  selectTodosItems,
@@ -10,19 +12,32 @@
 //  (items) => items.length
 // );
 
-function selectTodos(state) {
+export interface Todo {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+interface State {
+  todos: {
+    items: Todo[],
+    input: String,
+  }
+}
+
+function selectTodos(state: State) {
   return state.todos;
 }
 
-function selectTodosCount(state) {
+function selectTodosCount(state: State) {
   return selectTodosItems(state).length;
 }
 
-function selectTodosItems(state) {
+function selectTodosItems(state: State) {
   return selectTodos(state).items;
 }
 
-function selectTodosInput(state) {
+function selectTodosInput(state: State) {
   return selectTodos(state).input;
 }
 

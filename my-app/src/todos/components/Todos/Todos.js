@@ -1,7 +1,7 @@
 import React from 'react';
 import { TodoFormContainer } from '../../containers/TodoFormContainer';
 import { TodoListContainer } from '../../containers/TodoListContainer';
-import { Clock } from '../../../components/Clock/Clock';
+import { Clock, ClockDesactivable } from '../../../components/Clock/Clock';
 
 export function Todos() {
   return (
@@ -11,6 +11,7 @@ export function Todos() {
 
       <hr />
       <Clock />
+      <ClockDesactivable />
     </div>
   );
 }
