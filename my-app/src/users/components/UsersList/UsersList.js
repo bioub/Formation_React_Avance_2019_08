@@ -5,15 +5,21 @@ import ListItemText from '@material-ui/core/ListItemText';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
 import { getAll } from '../../api/users';
-import { userFetch, userFetchSuccess } from '../../actions';
+import { userFetch, userFetchSuccess, userFetchRequested } from '../../actions';
 
 export class UsersList extends Component {
-  async componentDidMount() {
+  componentDidMount() {
     // redux-thunk / redux-saga / redux-promise / redux-observable
-    this.props.dispatch(userFetch());
-    const users = await getAll();
-    this.props.dispatch(userFetchSuccess(users));
+    this.props.dispatch(userFetchRequested());
+
   }
+  // componentDidMount() {
+  //   // redux-thunk / redux-saga / redux-promise / redux-observable
+  //   this.props.dispatch(userFetch());
+  //   getAll().then((users) => {
+  //     this.props.dispatch(userFetchSuccess(users));
+  //   })
+  // }
   render() {
     const { match, users = [], loading } = this.props;
 
