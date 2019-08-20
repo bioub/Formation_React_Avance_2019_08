@@ -10,8 +10,8 @@ export function Todos() {
       <TodoListContainer />
 
       <hr />
-      <Clock />
-      <ClockDesactivable />
+      <Clock format="HH:mm" />
+      <ClockDesactivable format="HH:mm"  />
     </div>
   );
 }

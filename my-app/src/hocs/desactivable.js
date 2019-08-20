@@ -5,9 +5,9 @@ export function desactivable(WrappedComponent) {
     state = {
       show: true,
     };
-    handleClick = (show) => {
+    handleClick = () => {
       this.setState({
-        show: !show,
+        show: !this.state.show,
       });
     }
 
