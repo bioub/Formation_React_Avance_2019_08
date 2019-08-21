@@ -23,7 +23,8 @@ export function userFetchSuccess(users: any[]): FSA<any[]> {
 }
 
 export function userFetchRequested() {
-  return async function(dispatch) {
+  return async function(dispatch: (action: FSA<any>) => {}) {
+    // LOGGER DANS GOOGLE ANALYTICS
     dispatch(userFetch());
     const users = await getAll();
     dispatch(userFetchSuccess(users));

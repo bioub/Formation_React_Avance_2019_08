@@ -56,7 +56,7 @@ function selectTodosCount(state: State) {
 //   }
 // )
 
-function selectTodosItems(todos) {
+function selectTodosItems(todos: any) {
   const filter = todos.filter || 'ALL';
 
   if (filter === 'COMPLETED') {
