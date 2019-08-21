@@ -6,10 +6,15 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { configureStore } from './configureStore';
 import regeneratorRuntime from "regenerator-runtime";
+import { PersistGate } from 'redux-persist/integration/react'
+
+const { store, persistor } = configureStore();
 
 ReactDOM.render(
-  <Provider store={configureStore()}>
-    <App />
+  <Provider store={store}>
+    <PersistGate persistor={persistor} loading="Loading...">
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById('root'),
 );
