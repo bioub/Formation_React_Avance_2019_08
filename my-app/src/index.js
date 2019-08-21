@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
@@ -8,12 +8,30 @@ import { configureStore } from './configureStore';
 import regeneratorRuntime from "regenerator-runtime";
 import { PersistGate } from 'redux-persist/integration/react'
 
+import i18next from 'i18next';
+import XHR from 'i18next-xhr-backend';
+import { initReactI18next  } from 'react-i18next';
+
+i18next
+  .use(initReactI18next)
+  .use(XHR)
+  .init({
+    fallbackLng: 'en',
+    debug: true,
+
+    interpolation: {
+      escapeValue: false, // not needed for react as it escapes by default
+    },
+  });
+
 const { store, persistor } = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate persistor={persistor} loading="Loading...">
-      <App />
+      <Suspense fallback="Loading...">
+        <App />
+      </Suspense>
     </PersistGate>
   </Provider>,
   document.getElementById('root'),

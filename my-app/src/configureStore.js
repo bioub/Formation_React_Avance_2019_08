@@ -18,10 +18,11 @@ const rootReducer = combineReducers({
   form: reduxFormReducer,
 });
 
+// if (process.env.NODE_ENV === 'production')
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export function configureStore() {
   const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(thunk)));
   const persistor = persistStore(store)
-  return { store, persistor};
+  return { store, persistor };
 }
