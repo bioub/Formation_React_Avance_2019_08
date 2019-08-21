@@ -12,8 +12,8 @@ export function Todos(props) {
       <TodoListContainer />
 
       <hr />
-      <Clock format="HH:mm" />
-      <ClockDesactivable format="HH:mm" show={false}  />
+      <Clock format="HH:mm:ss" />
+      {/* <ClockDesactivable format="HH:mm" show={false}  /> */}
       <Select title="Cliquez ici" >
         {(close) => (
           <>
